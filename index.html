@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light" />
+    <meta name="theme-color" content="#ec2fa0" />
+    <title>Hex to CSS Filter Converter — Free Online Tool to Recolor Icons &amp; SVGs</title>
+    <link rel="icon" href="hexfilter.ico" type="image/x-icon" />
+    <meta name="description" content="Free online hex to CSS filter converter. Paste any #hex color and instantly copy the exact filter: invert() sepia() saturate() hue-rotate() brightness() contrast() rule to recolor black SVG, PNG and font icons — no images, no edits." />
+    <meta name="keywords" content="hex to css filter, hex to filter converter, color to css filter, css filter generator, recolor svg with css filter, recolor black icon css, invert sepia hue-rotate calculator, hex color to filter, css filter for icons" />
+    <meta name="author" content="Samanway Koley" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="googlebot" content="index, follow" />
+    <!-- <meta name="google-site-verification" content="YOUR_VERIFICATION_TOKEN" /> -->
+    <link rel="canonical" href="https://samanway-koley.github.io/hexfilter/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="HexFilter" />
+    <meta property="og:title" content="Hex to CSS Filter Converter — Free Online Tool" />
+    <meta property="og:description" content="Turn any hex color into a copy-ready CSS filter chain. Recolor black SVG, PNG and font icons instantly, right in your browser." />
+    <meta property="og:url" content="https://samanway-koley.github.io/hexfilter/" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:image" content="https://samanway-koley.github.io/hexfilter/hexfilter-preview.png" />
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Hex to CSS Filter Converter — Free Online Tool" />
+    <meta name="twitter:description" content="Paste a hex color, copy the CSS filter. Recolor black icons &amp; SVGs with pixel-perfect accuracy." />
+    <meta name="twitter:image" content="https://samanway-koley.github.io/hexfilter/hexfilter-preview.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@700;800;900&family=Hanken+Grotesk:wght@400;500;600;700&family=Caveat:wght@600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <!-- Structured data: WebApplication -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "HexFilter — Hex to CSS Filter Converter",
+        "alternateName": "Hex to CSS Filter Converter",
+        "applicationCategory": "DeveloperApplication",
+        "applicationSubCategory": "Utility",
+        "operatingSystem": "Any (modern web browser)",
+        "browserRequirements": "Requires JavaScript",
+        "description": "A free, privacy-first hex to CSS filter converter. Paste any hex color and copy the exact CSS filter rule (invert, sepia, saturate, hue-rotate, brightness, contrast) needed to recolor black SVG, PNG and font icons.",
+        "url": "https://samanway-koley.github.io/hexfilter/",
+        "image": "https://samanway-koley.github.io/hexfilter/hexfilter-preview.png",
+        "inLanguage": "en",
+        "isAccessibleForFree": true,
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "author": {
+            "@type": "Person",
+            "name": "Samanway Koley",
+            "url": "https://www.linkedin.com/in/samanway-koley"
+        },
+        "featureList": [
+            "Hex to CSS filter conversion",
+            "Live color-match preview",
+            "One-click copy of filter value or full rule",
+            "Supports #RGB and #RRGGBB hex and a color picker",
+            "Privacy-first: runs entirely in the browser",
+            "Recolor SVG, PNG and font icons"
+        ]
+    }
+    </script>
+    <!-- Structured data: FAQ -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+        {
+            "@type": "Question",
+            "name": "What does a hex to CSS filter converter do?",
+            "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It calculates a chain of CSS filter functions — invert(), sepia(), saturate(), hue-rotate(), brightness() and contrast() — that transforms a pure black pixel into your target hex color. Paste the result on any black icon, SVG or PNG and it visually becomes that color, with no image editing."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "How accurate is the generated CSS filter?",
+            "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Very accurate for most colors. The tool uses an SPSA optimizer that matches the target in both RGB and HSL color space, and it shows a live match percentage plus the computed RGB so you can verify the result before copying."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "Why must the source icon or image be black?",
+            "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "CSS filters transform existing pixels; they cannot invent color from transparency. The solver assumes a black (#000000) source, which is why icon libraries ship monochrome black glyphs. Start from black and the filter can reach any hue; starting from another color would give the wrong result."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "Which hex formats are supported?",
+            "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Both 3-digit (#RGB) and 6-digit (#RRGGBB) hex codes, with or without the leading # hash. You can also use the built-in color picker, and the input is case-insensitive."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "Does this tool upload my colors or icons to a server?",
+            "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. All conversion happens locally in your browser with JavaScript. Nothing is uploaded, stored or tracked, so it is safe to use with proprietary brand palettes."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "How do I use the filter on an SVG, PNG, or font icon?",
+            "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Copy the generated rule and apply it to your element, for example .icon { filter: invert(43%) sepia(52%) saturate(2344%) hue-rotate(305deg) brightness(95%) contrast(92%); }. Make sure the underlying icon renders black first (color: #000 for font icons, or a black SVG/PNG source)."
+            }
+        }
+        ]
+    }
+    </script>
+    <!-- Structured data: Breadcrumbs -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://samanway-koley.github.io/hexfilter/" },
+        { "@type": "ListItem", "position": 2, "name": "Tools", "item": "https://samanway-koley.github.io/hexfilter/#tool" },
+        { "@type": "ListItem", "position": 3, "name": "Hex to CSS Filter Converter", "item": "https://samanway-koley.github.io/hexfilter/#tool" }
+        ]
+    }
+    </script>
+    <!-- Structured data: Person (developer) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Samanway Koley",
+        "jobTitle": "Front-End Developer",
+        "url": "https://www.linkedin.com/in/samanway-koley",
+        "email": "mailto:samanway.koley@gmail.com",
+        "sameAs": [ "https://www.linkedin.com/in/samanway-koley" ]
+    }
+    </script>
+</head>
+
+<body>
+    <a class="skip-link" href="#tool">Skip to the converter</a>
+    <noscript>
+        <p style="max-width:720px;margin:90px auto;padding:0 22px;color:#6f6570;font-family:system-ui,sans-serif;">
+            This hex to CSS filter converter requires JavaScript. Please enable JavaScript to convert colors.
+        </p>
+    </noscript>
+    <!-- ============================ NAV ============================ -->
+    <header class="nav" id="top">
+        <div class="wrap">
+            <a class="brand" href="#top" aria-label="HexFilter home">
+                <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <line x1="6" y1="12" x2="26" y2="12" stroke="#1B0A18" stroke-width="3" stroke-linecap="round" />
+                    <line x1="6" y1="20" x2="26" y2="20" stroke="#1B0A18" stroke-width="3" stroke-linecap="round" />
+                    <line x1="10" y1="6" x2="10" y2="26" stroke="#1B0A18" stroke-width="3" stroke-linecap="round" />
+                    <line x1="18" y1="6" x2="26" y2="26" stroke="#EC2FA0" stroke-width="3.5" stroke-linecap="round" />
+                </svg>
+                HexFilter
+            </a>
+            <nav class="nav-links" aria-label="Primary">
+                <a href="#tool">Converter</a>
+                <a href="#how">How it works</a>
+                <a href="#usage">Usage</a>
+                <a href="#features">Features</a>
+                <a href="#faq">FAQ</a>
+            </nav>
+            <div class="nav-right">
+                <span class="free">★ 100% free</span>
+                <a class="btn btn-pink" href="#tool">Open tool</a>
+                <button class="nav-toggle" aria-label="Toggle menu"
+                    aria-expanded="false"><span></span><span></span><span></span></button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- ============================ HERO ============================ -->
+        <section class="hero" aria-labelledby="hero-h">
+            <div class="wrap">
+                <div class="hero-inner">
+                    <span class="badge"><span class="pip" aria-hidden="true"></span> Free online developer tool</span>
+                    <h1 id="hero-h">Convert any hex color into a CSS&nbsp;filter.</h1>
+                    <p class="lead">Paste a <strong>#hex</strong> code and instantly get the exact
+                        <code>filter: invert() sepia() …</code> chain that recolors <u>icons</u>, <u>SVGs</u> and
+                        <u>PNGs</u> — no image edits, no design-tool round-trips.
+                    </p>
+                    <div class="hero-cta">
+                        <a class="btn btn-pink" href="#tool">Open the converter ↓</a>
+                        <a class="btn btn-ghost" href="#how">See how it works</a>
+                    </div>
+                </div>
+                <span class="script left" aria-hidden="true">paste any #hex ✎
+                    <svg width="92" height="46" viewBox="0 0 92 46" fill="none">
+                        <path d="M4 6c30 4 58 10 78 30" stroke="#d61f8e" stroke-width="2.5" stroke-linecap="round" />
+                        <path d="M70 28l14 9-3-15" stroke="#d61f8e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </span>
+                <span class="script right" aria-hidden="true">copy &amp; paste ready
+                    <svg width="92" height="46" viewBox="0 0 92 46" fill="none" style="margin-left:auto">
+                        <path d="M88 6C58 10 30 16 10 36" stroke="#d61f8e" stroke-width="2.5" stroke-linecap="round" />
+                        <path d="M22 28L8 37l3-15" stroke="#d61f8e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </span>
+            </div>
+            <div class="marquee" aria-hidden="true">
+                <div class="marquee-track">
+                    <span class="chip"><i class="d"></i>#RRGGBB</span>
+                    <span class="chip"><i class="d"></i>#RGB shorthand</span>
+                    <span class="chip"><i class="d"></i>SVG icons</span>
+                    <span class="chip"><i class="d"></i>PNG logos</span>
+                    <span class="chip"><i class="d"></i>Font icons</span>
+                    <span class="chip"><i class="d"></i>Brand / theme colors</span>
+                    <span class="chip"><i class="d"></i>Dark-mode safe</span>
+                    <span class="chip"><i class="d"></i>Pixel-perfect</span>
+                    <span class="chip"><i class="d"></i>Accessible</span>
+                    <span class="chip"><i class="d"></i>One-line CSS</span>
+                    <!-- duplicate for seamless loop -->
+                    <span class="chip"><i class="d"></i>#RRGGBB</span>
+                    <span class="chip"><i class="d"></i>#RGB shorthand</span>
+                    <span class="chip"><i class="d"></i>SVG icons</span>
+                    <span class="chip"><i class="d"></i>PNG logos</span>
+                    <span class="chip"><i class="d"></i>Font icons</span>
+                    <span class="chip"><i class="d"></i>Brand / theme colors</span>
+                    <span class="chip"><i class="d"></i>Dark-mode safe</span>
+                    <span class="chip"><i class="d"></i>Pixel-perfect</span>
+                    <span class="chip"><i class="d"></i>Accessible</span>
+                    <span class="chip"><i class="d"></i>One-line CSS</span>
+                    <!-- duplicate for seamless loop -->
+                    <span class="chip"><i class="d"></i>#RRGGBB</span>
+                    <span class="chip"><i class="d"></i>#RGB shorthand</span>
+                    <span class="chip"><i class="d"></i>SVG icons</span>
+                    <span class="chip"><i class="d"></i>PNG logos</span>
+                    <span class="chip"><i class="d"></i>Font icons</span>
+                    <span class="chip"><i class="d"></i>Brand / theme colors</span>
+                    <span class="chip"><i class="d"></i>Dark-mode safe</span>
+                    <span class="chip"><i class="d"></i>Pixel-perfect</span>
+                    <span class="chip"><i class="d"></i>Accessible</span>
+                    <span class="chip"><i class="d"></i>One-line CSS</span>
+                    <!-- duplicate for seamless loop -->
+                    <span class="chip"><i class="d"></i>#RRGGBB</span>
+                    <span class="chip"><i class="d"></i>#RGB shorthand</span>
+                    <span class="chip"><i class="d"></i>SVG icons</span>
+                    <span class="chip"><i class="d"></i>PNG logos</span>
+                    <span class="chip"><i class="d"></i>Font icons</span>
+                    <span class="chip"><i class="d"></i>Brand / theme colors</span>
+                    <span class="chip"><i class="d"></i>Dark-mode safe</span>
+                    <span class="chip"><i class="d"></i>Pixel-perfect</span>
+                    <span class="chip"><i class="d"></i>Accessible</span>
+                    <span class="chip"><i class="d"></i>One-line CSS</span>
+                </div>
+            </div>
+        </section>
+        <!-- ============================ TOOL ============================ -->
+        <section class="tool-section" id="tool" aria-labelledby="tool-h">
+            <div class="wrap">
+                <div class="tool-card">
+                    <div>
+                        <div class="col-h">
+                            <h3 id="tool-h">Hex → CSS Filter Converter</h3><span class="tag">Input</span>
+                        </div>
+                        <p class="field-label" id="hexLabel">Target color</p>
+                        <div class="hex-row">
+                            <div class="hex-input">
+                                <span class="hash" aria-hidden="true">#</span>
+                                <input type="text" id="hexText" inputmode="text" maxlength="6" spellcheck="false"
+                                    autocomplete="off" aria-labelledby="hexLabel" placeholder="EC2FA0" />
+                            </div>
+                            <label class="color-pick">
+                                <span class="sr-only">Pick a color</span>
+                                <input type="color" id="colorPick" value="#ec2fa0" />
+                            </label>
+                        </div>
+                        <p class="err-msg" role="alert"></p>
+                        <div class="presets">
+                            <p class="field-label">Try a preset</p>
+                            <div class="swatches">
+                                <button class="swatch" data-hex="#EC2FA0" style="background:#EC2FA0" aria-label="Use #EC2FA0"></button>
+                                <button class="swatch" data-hex="#F7D23F" style="background:#F7D23F" aria-label="Use #F7D23F"></button>
+                                <button class="swatch" data-hex="#2A0A26" style="background:#2A0A26" aria-label="Use #2A0A26"></button>
+                                <button class="swatch" data-hex="#2563EB" style="background:#2563EB" aria-label="Use #2563EB"></button>
+                                <button class="swatch" data-hex="#16A34A" style="background:#16A34A" aria-label="Use #16A34A"></button>
+                                <button class="swatch" data-hex="#EF4444" style="background:#EF4444" aria-label="Use #EF4444"></button>
+                                <button class="swatch" data-hex="#0EA5E9" style="background:#0EA5E9" aria-label="Use #0EA5E9"></button>
+                                <button class="swatch" data-hex="#111111" style="background:#111111" aria-label="Use #111111"></button>
+                                <button class="swatch" data-hex="#FFFFFF" style="background:#FFFFFF" aria-label="Use #FFFFFF"></button>
+                            </div>
+                        </div>
+                        <div class="readouts" aria-live="polite">
+                            <div class="readout"><span>RGB</span><b id="outRgb">236, 47, 160</b></div>
+                            <div class="readout"><span>HSL</span><b id="outHsl">324°, 83%, 55%</b></div>
+                            <div class="readout"><span>Result</span><b id="outApprox">#EC2FA0</b></div>
+                        </div>
+                        <div class="match">
+                            <div class="match-top"><span>Color match</span><b class="pct match-pct">100%</b></div>
+                            <div class="match-bar">
+                                <div class="match-fill"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- RIGHT: preview + output -->
+                    <div>
+                        <div class="col-h">
+                            <h3>Live preview</h3><span class="tag">Output</span>
+                        </div>
+                        <div class="preview-grid">
+                            <div class="ptile">
+                                <div class="sw target" aria-hidden="true"></div>
+                                <div class="meta"><span>TARGET</span><b>solid color</b></div>
+                            </div>
+                            <div class="ptile">
+                                <div class="sw"><span class="blk" aria-hidden="true"></span></div>
+                                <div class="meta"><span>FILTERED</span><b>color → filter</b></div>
+                            </div>
+                        </div>
+                        <div class="icon-demo">
+                            <p class="lbl">Real icon, recolored by one filter line</p>
+                            <div class="icon-row">
+                                <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24">
+                                    <path
+                                            d="M12 2l2.95 6.36 6.95.72-5.18 4.66 1.46 6.86L12 17.77 5.82 20.6l1.46-6.86L2.1 9.08l6.95-.72z" />
+                                    </svg></span>
+                                <span class="arrow" aria-hidden="true">→</span>
+                                <span class="ic f" aria-hidden="true"><svg viewBox="0 0 24 24">
+                                        <path
+                                            d="M12 2l2.95 6.36 6.95.72-5.18 4.66 1.46 6.86L12 17.77 5.82 20.6l1.46-6.86L2.1 9.08l6.95-.72z" />
+                                    </svg></span>
+                                <span class="note">same SVG markup, zero edits</span>
+                            </div>
+                        </div>
+                        <div class="code-out">
+                            <div class="bar">
+                                <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+                                <span class="copies">
+                                    <button class="copy-btn" id="copyValue">Copy value</button>
+                                    <button class="copy-btn" id="copyRule">Copy rule</button>
+                                </span>
+                            </div>
+                            <pre id="codeRule" aria-label="Generated CSS filter rule"></pre>
+                        </div>
+                        <p id="copyLive" class="sr-only" aria-live="polite"></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ============================ STEPS ============================ -->
+        <section class="sec" id="how" aria-labelledby="how-h">
+            <div class="wrap">
+                <div class="sec-head" data-reveal>
+                    <span class="eyebrow">How it works</span>
+                    <h2 id="how-h">Three steps. Zero guesswork.</h2>
+                    <p>No more nudging <code>hue-rotate</code> by eye. The converter solves the math and shows you the
+                        result before you copy.</p>
+                </div>
+                <div class="steps" data-reveal>
+                    <span class="step"><span class="n">1</span> Enter any hex color</span>
+                    <span class="step"><span class="n">2</span> Watch the live match</span>
+                    <span class="step"><span class="n">3</span> Copy the CSS filter</span>
+                </div>
+            </div>
+        </section>
+        <!-- ============================ DARK / USAGE ============================ -->
+        <section class="sec" id="usage" aria-labelledby="usage-h">
+            <div class="wrap">
+                <div class="dark" data-reveal>
+                    <svg class="doodle spring" viewBox="0 0 200 220" aria-hidden="true">
+                        <path
+                            d="M20 200 C 70 200 80 150 40 150 C 0 150 10 110 60 110 C 110 110 120 70 70 70 C 30 70 40 30 90 30 C 140 30 150 70 120 90" />
+                    </svg>
+                    <svg class="doodle loop" viewBox="0 0 200 140" aria-hidden="true">
+                        <path
+                            d="M10 70 C 40 10 90 10 90 60 C 90 100 40 100 60 60 C 80 20 150 20 150 70 C 150 120 100 120 120 80 C 135 50 180 55 190 80" />
+                    </svg>
+                    <div class="pad">
+                        <div class="sec-head">
+                            <span class="eyebrow" style="color:#f7a8d4">Drop-in usage</span>
+                            <h2 id="usage-h">Use it on anything that's black</h2>
+                            <p class="sub">Inline SVGs, font icons, black PNGs or solid CSS shapes — one <code style="color:#ec2fa0">filter</code> line recolors them to match your theme.</p>
+                        </div>
+                        <div class="tabs" role="tablist" aria-label="Usage contexts">
+                            <button class="tab active" data-tab="svg" role="tab">SVG icons</button>
+                            <button class="tab" data-tab="font" role="tab">Font icons</button>
+                            <button class="tab" data-tab="png" role="tab">PNG images</button>
+                            <button class="tab" data-tab="shape" role="tab">CSS shapes</button>
+                        </div>
+                        <div class="dark-grid">
+                            <div class="dark-card">
+                                <h4>Copy &amp; paste snippet</h4>
+                                <p>Switch the context above — the rule updates for the selected icon type.</p>
+                                <div class="dark-code" aria-live="polite"></div>
+                            </div>
+                            <div class="dark-card">
+                                <h4>Live demo</h4>
+                                <p>The same black star, recolored to a brand color purely with the generated filter.</p>
+                                <div style="display:flex;align-items:center;gap:16px">
+                                    <span class="demo-star">
+                                        <svg viewBox="0 0 24 24">
+                                            <path d="M12 2l2.95 6.36 6.95.72-5.18 4.66 1.46 6.86L12 17.77 5.82 20.6l1.46-6.86L2.1 9.08l6.95-.72z" />
+                                        </svg>
+                                    </span>
+                                </div>
+                                <div class="tryrow">
+                                    <span class="lab">Try</span>
+                                    <button class="try-sw active" data-hex="#EC2FA0" style="background:#EC2FA0" aria-label="Recolor demo to pink"></button>
+                                    <button class="try-sw" data-hex="#F7D23F" style="background:#F7D23F" aria-label="Recolor demo to yellow"></button>
+                                    <button class="try-sw" data-hex="#2563EB" style="background:#2563EB" aria-label="Recolor demo to blue"></button>
+                                    <button class="try-sw" data-hex="#16A34A" style="background:#16A34A" aria-label="Recolor demo to green"></button>
+                                    <button class="try-sw" data-hex="#2A0A26" style="background:#2A0A26" aria-label="Recolor demo to plum"></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ============================ FEATURES ============================ -->
+        <section class="sec" id="features" aria-labelledby="feat-h">
+            <div class="wrap">
+                <div class="sec-head" data-reveal>
+                    <span class="eyebrow">Why HexFilter</span>
+                    <h2 id="feat-h">Everything you need to recolor with CSS</h2>
+                    <p>Built for design systems and icon libraries where the brand color has to be exact and the markup has to stay untouched.</p>
+                </div>
+                <div class="feat-grid" data-reveal>
+                    <article class="feat">
+                        <span class="lbl">Accurate</span>
+                        <h3>RGB + HSL matching</h3>
+                        <p>An SPSA optimizer tunes six filter functions until the output matches your target in both RGB and HSL color space.</p>
+                        <div class="viz">
+                            <div class="v-swatches"><i style="background:#EC2FA0"></i><i style="background:#EC2FA0"></i>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="feat">
+                        <span class="lbl">Instant</span>
+                        <h3>Live preview as you type</h3>
+                        <p>Every keystroke recomputes the filter and updates the black-to-color preview with a smooth transition.</p>
+                        <div class="viz">
+                            <div class="v-list"><span><i></i></span><span><i></i></span><span><i></i></span></div>
+                        </div>
+                    </article>
+                    <article class="feat">
+                        <span class="lbl">One-click</span>
+                        <h3>Copy value or full rule</h3>
+                        <p>Grab just the filter value or the complete <code>filter: …;</code> declaration and paste straight into your stylesheet.</p>
+                        <div class="viz">
+                            <div class="v-copy"><code>filter: …</code><b>COPY</b></div>
+                        </div>
+                    </article>
+                    <article class="feat">
+                        <span class="lbl">Flexible</span>
+                        <h3>Any hex format</h3>
+                        <p>Supports 3-digit and 6-digit hex, with or without the <code>#</code>, plus a native color picker for visual selection.</p>
+                        <div class="viz">
+                            <div class="v-formats"><em>#RGB</em><em>#RRGGBB</em><em>picker</em></div>
+                        </div>
+                    </article>
+                    <article class="feat">
+                        <span class="lbl">Private</span>
+                        <h3>Runs in your browser</h3>
+                        <p>Nothing is uploaded or stored. Safe for proprietary brand palettes — the solver never leaves your device.</p>
+                        <div class="viz">
+                            <div class="v-lock">
+                                <svg viewBox="0 0 24 24">
+                                    <rect x="4" y="11" width="16" height="9" rx="2" />
+                                    <path d="M8 11V8a4 4 0 0 1 8 0v3" />
+                                </svg>in your browser
+                            </div>
+                        </div>
+                    </article>
+                    <article class="feat">
+                        <span class="lbl">Universal</span>
+                        <h3>SVG, PNG &amp; font icons</h3>
+                        <p>Works on any black asset — inline SVG, masked PNG logo, or a monochrome glyph from your icon font.</p>
+                        <div class="viz">
+                            <div class="v-icons"><span style="background:#EC2FA0"></span><span style="background:#2563EB"></span><span style="background:#16A34A"></span></div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================ BEFORE / AFTER ============================ -->
+        <section class="sec" aria-labelledby="ba-h">
+            <div class="wrap">
+                <div class="sec-head" data-reveal>
+                    <span class="eyebrow">The difference</span>
+                    <h2 id="ba-h">Quit guessing filter values</h2>
+                    <p>Manually tweaking brightness and hue-rotate never quite lands the brand color. Let the math do it once, correctly.</p>
+                </div>
+                <div class="ba">
+                    <div class="ba-card before" data-reveal>
+                        <div class="ba-top">
+                            <div class="apps" aria-hidden="true">
+                                <i style="background:#2563EB"></i><i style="background:#111"></i>
+                                <i style="background:#F7D23F"></i><i style="background:#16A34A"></i>
+                                <i style="background:#EF4444"></i><i style="background:#0EA5E9"></i>
+                            </div>
+                            <span class="ba-tag">Before</span>
+                        </div>
+                        <div class="ba-body">
+                            <ul class="ba-list">
+                                <li><span class="mk">×</span> Endless trial-and-error with hue-rotate</li>
+                                <li><span class="mk">×</span> The hue is always a little off</li>
+                                <li><span class="mk">×</span> Hours wasted per brand color</li>
+                                <li><span class="mk">×</span> Inconsistent icons across the UI</li>
+                                <li><span class="mk">×</span> Breaks again in dark mode</li>
+                                <li><span class="mk">×</span> Ugly approximations shipped</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="ba-card after" data-reveal data-delay="1">
+                        <div class="ba-top">
+                            <div class="target-mark" aria-hidden="true">
+                                <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <line x1="6" y1="12" x2="26" y2="12" stroke="#1B0A18" stroke-width="3" stroke-linecap="round"></line>
+                                    <line x1="6" y1="20" x2="26" y2="20" stroke="#1B0A18" stroke-width="3" stroke-linecap="round"></line>
+                                    <line x1="10" y1="6" x2="10" y2="26" stroke="#1B0A18" stroke-width="3" stroke-linecap="round"></line>
+                                    <line x1="18" y1="6" x2="26" y2="26" stroke="#EC2FA0" stroke-width="3.5" stroke-linecap="round"></line>
+                                </svg>
+                            </div>
+                            <span class="ba-tag">After</span>
+                        </div>
+                        <div class="ba-body">
+                            <ul class="ba-list">
+                                <li><span class="mk">✓</span> Exact RGB + HSL match</li>
+                                <li><span class="mk">✓</span> One paste and you're done</li>
+                                <li><span class="mk">✓</span> Pixel-perfect brand icons</li>
+                                <li><span class="mk">✓</span> Consistent theme colors everywhere</li>
+                                <li><span class="mk">✓</span> Works on any black asset</li>
+                                <li><span class="mk">✓</span> Free forever, in the browser</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ============================ FAQ ============================ -->
+        <section class="sec" id="faq" aria-labelledby="faq-h">
+            <div class="wrap">
+                <div class="sec-head" data-reveal>
+                    <span class="eyebrow">FAQ</span>
+                    <h2 id="faq-h">Hex to CSS filter, answered</h2>
+                    <p>Everything you wanted to know about converting a hex color code into a usable CSS filter rule.</p>
+                </div>
+                <div class="faq-wrap" data-reveal>
+                    <div class="faq">
+                        <button class="faq-q" aria-expanded="false">What does a hex to CSS filter converter do?
+                            <span class="chev" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5">
+                                    <path d="M12 5v14M5 12h14" />
+                                </svg>
+                            </span>
+                        </button>
+                        <div class="faq-a">
+                            <p>It calculates a chain of CSS filter functions — <code>invert()</code>,
+                                <code>sepia()</code>, <code>saturate()</code>, <code>hue-rotate()</code>,
+                                <code>brightness()</code> and <code>contrast()</code> — that transforms a pure black
+                                pixel into your target hex color. Paste the result on any black icon, SVG or PNG and it
+                                visually becomes that color, with no image editing.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="faq">
+                        <button class="faq-q" aria-expanded="false">How accurate is the generated CSS filter?
+                            <span class="chev" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5">
+                                    <path d="M12 5v14M5 12h14" />
+                                </svg>
+                            </span>
+                        </button>
+                        <div class="faq-a">
+                            <p>Very accurate for most colors. The tool uses an SPSA optimizer that matches the target in
+                                both RGB and HSL color space, and it shows a live match percentage plus the computed RGB
+                                so you can verify the result before copying.</p>
+                        </div>
+                    </div>
+                    <div class="faq">
+                        <button class="faq-q" aria-expanded="false">Why must the source icon or image be black?
+                            <span class="chev" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5">
+                                    <path d="M12 5v14M5 12h14" />
+                                </svg>
+                            </span>
+                        </button>
+                        <div class="faq-a">
+                            <p>CSS filters transform existing pixels; they cannot invent color from transparency. The
+                                solver assumes a black (<code>#000000</code>) source, which is why icon libraries ship
+                                monochrome black glyphs. Start from black and the filter can reach any hue; starting
+                                from another color would give the wrong result.</p>
+                        </div>
+                    </div>
+                    <div class="faq">
+                        <button class="faq-q" aria-expanded="false">Which hex formats are supported?
+                            <span class="chev" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5">
+                                    <path d="M12 5v14M5 12h14" />
+                                </svg>
+                            </span>
+                        </button>
+                        <div class="faq-a">
+                            <p>Both 3-digit (<code>#RGB</code>) and 6-digit (<code>#RRGGBB</code>) hex codes, with or
+                                without the leading <code>#</code> hash. You can also use the built-in color picker, and
+                                the input is case-insensitive.</p>
+                        </div>
+                    </div>
+                    <div class="faq">
+                        <button class="faq-q" aria-expanded="false">Does this tool upload my colors or icons to a
+                            server?
+                            <span class="chev" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5">
+                                    <path d="M12 5v14M5 12h14" />
+                                </svg>
+                            </span>
+                        </button>
+                        <div class="faq-a">
+                            <p>No. All conversion happens locally in your browser with JavaScript. Nothing is uploaded,
+                                stored or tracked, so it is safe to use with proprietary brand palettes.</p>
+                        </div>
+                    </div>
+                    <div class="faq">
+                        <button class="faq-q" aria-expanded="false">How do I use the filter on an SVG, PNG, or font icon?
+                            <span class="chev" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5">
+                                <path d="M12 5v14M5 12h14" />
+                                </svg>
+                            </span>
+                        </button>
+                        <div class="faq-a">
+                            <p>Copy the generated rule and apply it to your element, for example
+                                <code>.icon { filter: invert(43%) sepia(52%) saturate(2344%) hue-rotate(305deg) brightness(95%) contrast(92%); }</code>.
+                                Make sure the underlying icon renders black first (<code>color: #000</code> for font
+                                icons, or a black SVG / PNG source).
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ============================ CTA ============================ -->
+        <section class="sec" aria-labelledby="cta-h">
+            <div class="wrap">
+                <div class="cta" data-reveal>
+                    <div class="pad">
+                        <div>
+                            <h2 id="cta-h">Start converting colors now</h2>
+                            <p>Free, instant, and private. Paste a hex, copy the CSS — your icons will finally match the
+                                design spec.</p>
+                            <a class="btn btn-pink" href="#tool">Open the converter</a>
+                        </div>
+                        <div class="cta-mock" aria-hidden="true">
+<div class="bar"><i></i><i></i><i></i></div>
+<pre><span class="k">.icon</span> {
+  <span class="k">filter</span>: <span class="v">invert(43%) sepia(52%)
+    saturate(2344%) hue-rotate(305deg)
+    brightness(95%) contrast(92%)</span>;
+}</pre>
+            </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- ============================ FOOTER ============================ -->
+    <footer class="footer">
+        <div class="wrap">
+            <div class="f-left">
+                <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <line x1="6" y1="12" x2="26" y2="12" stroke="#1B0A18" stroke-width="3" stroke-linecap="round" />
+                    <line x1="6" y1="20" x2="26" y2="20" stroke="#1B0A18" stroke-width="3" stroke-linecap="round" />
+                    <line x1="10" y1="6" x2="10" y2="26" stroke="#1B0A18" stroke-width="3" stroke-linecap="round" />
+                    <line x1="18" y1="6" x2="26" y2="26" stroke="#EC2FA0" stroke-width="3.5" stroke-linecap="round" />
+                </svg>
+                <span>&copy; 2026 HexFilter</span>
+            </div>
+            <div class="f-center">Developed by <a href="https://github.com/Samanway-Koley" target="_blank" rel="noopener">Samanway Koley</a></div>
+            <div class="f-right">
+                <a class="soc" href="mailto:samanway.koley@gmail.com" aria-label="Email Samanway Koley" title="Email">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="5" width="18" height="14" rx="2" />
+                        <path d="m3 7 9 6 9-6" />
+                    </svg>
+                </a>
+                <a class="soc" href="https://www.linkedin.com/in/samanway-koley" target="_blank" rel="noopener" aria-label="Samanway Koley on LinkedIn" title="LinkedIn">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.35c0-1.28-.02-2.92-1.78-2.92-1.78 0-2.05 1.39-2.05 2.83V21H9z" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+</body>
+</html>
